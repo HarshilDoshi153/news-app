@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import News from './components/News';
+import About from './components/About';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar /> {/* Navbar component with links */}
+          <Routes>
+            <Route path="/" element={<News pageSize = {15} category="general"/>} /> {/* Home page */}
+            <Route path="/sports" element={<News pageSize = {15} category="sports"/>} /> {/* sports news */}
+            <Route path="/business" element={<News pageSize = {15} category="business"/>} /> {/* business news */}
+            <Route path="/entertainment" element={<News pageSize = {15} category="entertainment"/>} /> {/* entertainment news */}
+            <Route path="/science" element={<News pageSize = {15} category="science"/>} /> {/* science news */}
+            <Route path="/technology" element={<News pageSize = {15} category="technology"/>} /> {/* technology */}
+            <Route path="/health" element={<News pageSize = {15} category="health"/>} /> {/* health news */}
+            <Route path="/about" element={<About />} /> {/* About component */}
+          </Routes>
+        </div>
+      </Router>
+    )
+  }
 }
-
-export default App;
