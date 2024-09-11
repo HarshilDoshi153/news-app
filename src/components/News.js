@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 
 export default class News extends Component {
   static defaultProps = {
-    category: 'science',
-    pageSize: 15
+    category: 'general',
+    pageSize: 15,
+    title: "General"
   }
   static propTypes = {
     category: PropTypes.string,
-    pageSize: PropTypes.number
+    pageSize: PropTypes.number,
+    title: PropTypes.string
   }
   constructor() {
     super();
@@ -67,7 +69,7 @@ export default class News extends Component {
   render() {
     return (
       <div className='container'>
-        <h2 className='text-center my-4'>NewsApp - Top Headlines</h2>
+        <h2 className='text-center my-4'>NewsApp - {this.props.title} Top Headlines</h2>
         {this.state.loading && <Spinner />}
         <div className='container my-4'>
           <div className='row'>
