@@ -27,6 +27,7 @@ export default class News extends Component {
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
+    console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
@@ -41,6 +42,7 @@ export default class News extends Component {
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
+    console.log(parsedData);
     this.setState({
       page: this.state.page - 1,
       articles: parsedData.articles,
@@ -55,6 +57,7 @@ export default class News extends Component {
       this.setState({ loading: true });
       let data = await fetch(url);
       let parsedData = await data.json();
+      console.log(parsedData);
       this.setState({
         page: this.state.page + 1,
         articles: parsedData.articles,
@@ -71,7 +74,7 @@ export default class News extends Component {
           <div className='row'>
             {this.state.articles.map((element) => {
               return <div className='col-md-4' key={element.url}>
-                <NewsItem title={element.title ? element.title.slice(0, 35) : ""} description={element.description ? element.description.slice(0, 85) : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
+                <NewsItem title={element.title ? element.title.slice(0, 35) : ""} description={element.description ? element.description.slice(0, 85) : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
               </div>
             })}
           </div>
