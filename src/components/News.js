@@ -24,11 +24,9 @@ export default class News extends Component {
 
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=1&pageSize=${this.props.pageSize}`;
-    console.log(url);
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
@@ -40,7 +38,6 @@ export default class News extends Component {
   handlePrevClick = async () => {
     console.log("Previous");
     let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
-    console.log(url);
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -55,7 +52,6 @@ export default class News extends Component {
     console.log("Next");
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.state.pageSize))) {
       let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
-      console.log(url);
       this.setState({ loading: true });
       let data = await fetch(url);
       let parsedData = await data.json();
@@ -75,7 +71,7 @@ export default class News extends Component {
           <div className='row'>
             {this.state.articles.map((element) => {
               return <div className='col-md-4' key={element.url}>
-                <NewsItem title={element.title ? element.title.slice(0, 35) : ""} description={element.description ? element.description.slice(0, 85) : ""} imageUrl={element.urlToImage} newsUrl={element.url} />
+                <NewsItem title={element.title ? element.title.slice(0, 35) : ""} description={element.description ? element.description.slice(0, 85) : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
               </div>
             })}
           </div>

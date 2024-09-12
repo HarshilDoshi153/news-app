@@ -11,7 +11,7 @@ export default class NewsItem extends Component {
       "https://tse2.mm.bing.net/th?id=OIP.NrYbs9hurY9_2X3bSyAaZgAAAA&pid=Api&P=0&h=220"
     ];
     const randomImage = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-    let { title, description, imageUrl, newsUrl } = this.props;
+    let { title, description, imageUrl, newsUrl, author, date } = this.props;
     return (
       <div>
         <div className="card mb-3">
@@ -19,6 +19,7 @@ export default class NewsItem extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>
+            <p className="card-text"><small className='text-muted'>By {author? author: "Unknown"} on {new Date(date).toDateString()}</small></p>
             <a href={newsUrl} target="_blank" className="icon-link icon-link-hover" rel="noreferrer">
               Read More 
               <i className="bi bi-arrow-right" aria-hidden="true">
