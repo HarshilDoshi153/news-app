@@ -16,8 +16,8 @@ export default class NewsItem extends Component {
       <div>
         <div className="card mb-3">
           <img src={!imageUrl ? randomImage : imageUrl} className="card-img-top" alt="..." />
-          <span className="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-          </span>
+          {/* <span className="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
+          </span> */}
           <div className="card-body">
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{description}...</p>

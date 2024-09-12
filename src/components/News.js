@@ -14,14 +14,18 @@ export default class News extends Component {
     pageSize: PropTypes.number,
     title: PropTypes.string
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: true
     }
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - News 24/7`;
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -32,7 +36,7 @@ export default class News extends Component {
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
-      page:1
+      page: 1
     })
   }
 
