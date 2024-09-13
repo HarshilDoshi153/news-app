@@ -102,7 +102,7 @@ export default class News extends Component {
             dataLength={this.state.articles.length}
             next={this.fetchMoreData}
             hasMore={this.state.articles.length < this.state.totalResults}
-            loader={<Spinner />}>
+            loader={this.state.loading && <Spinner />}>
             <div className='container'>
               <div className='row'>
                 {this.state.articles.map((element) => {
