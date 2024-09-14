@@ -29,12 +29,10 @@ export default class News extends Component {
   }
 
   async componentDidMount() {
-    // Fetch news on initial load
     this.fetchNews();
   }
 
   async componentDidUpdate(prevProps) {
-    // If the searchTerm or category changes, fetch the updated news
     if (prevProps.searchTerm !== this.props.searchTerm || prevProps.category !== this.props.category) {
       this.setState({ page: 1, articles: [] }, () => {
         this.fetchNews();
@@ -46,13 +44,9 @@ export default class News extends Component {
     this.setState({ loading: true });
     let url;
     if (this.props.searchTerm) {
-      // If there's a search term, use the everything API
       url = `https://newsapi.org/v2/everything?q=${this.props.searchTerm}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-      console.log(url);
     } else {
-      // Else use the category-based top headlines API
       url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-      console.log(url);
     }
     
     let data = await fetch(url);
@@ -81,8 +75,10 @@ export default class News extends Component {
             loader={<Spinner />}>
             <div className='container'>
               <div className='row'>
-                {this.state.articles.map((element) => {
-                  return (
+                {this.state.articles.length === 0 && !this.state.loading ? (
+                  <div className='container text-center text-danger'>News not found</div>
+                ) : (
+                  this.state.articles.map((element) => (
                     <div className='col-md-4' key={element.url}>
                       <NewsItem
                         title={element.title ? element.title.slice(0, 35) : ''}
@@ -94,8 +90,8 @@ export default class News extends Component {
                         source={element.source.name}
                       />
                     </div>
-                  );
-                })}
+                  ))
+                )}
               </div>
             </div>
           </InfiniteScroll>
