@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 export default class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: ''
+        };
+    }
+
+    handleInputChange = (event) => {
+        this.setState({ searchTerm: event.target.value });
+    };
+
+    handleSearchSubmit = (event) => {
+        event.preventDefault();
+        this.props.onSearch(this.state.searchTerm.toLowerCase()); // Pass the search term to the parent
+    };
     render() {
         return (
             <div className="sticky-top">
@@ -34,6 +49,10 @@ export default class Navbar extends Component {
                                     </ul>
                                 </li>
                             </ul>
+                            <form className="d-flex" role="search" onSubmit={this.handleSearchSubmit}>
+                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={this.state.searchTerm} onChange={this.handleInputChange}/>
+                                    <button className="btn btn-outline-success" type="submit">Search</button>
+                            </form>
                         </div>
                     </div>
                 </nav>
