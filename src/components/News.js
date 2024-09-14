@@ -15,7 +15,7 @@ export default class News extends Component {
     category: PropTypes.string,
     pageSize: PropTypes.number,
     title: PropTypes.string,
-    searchTerm: PropTypes.string, // Add prop type for searchTerm
+    searchTerm: PropTypes.string,
   };
 
   constructor(props) {
@@ -45,6 +45,7 @@ export default class News extends Component {
     let url;
     if (this.props.searchTerm) {
       url = `https://newsapi.org/v2/everything?q=${this.props.searchTerm}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      console.log(url);
     } else {
       url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     }
@@ -59,6 +60,11 @@ export default class News extends Component {
   };
 
   fetchMoreData = async () => {
+    
+    if (this.state.page >= 6) {
+      this.setState({ loading: false });
+      return;
+    }
     this.setState({ page: this.state.page + 1 }, () => this.fetchNews());
   };
 
@@ -72,7 +78,7 @@ export default class News extends Component {
             dataLength={this.state.articles.length}
             next={this.fetchMoreData}
             hasMore={this.state.articles.length < this.state.totalResults}
-            loader={<Spinner />}>
+            loader={this.props.searchTerm && <Spinner />}>
             <div className='container'>
               <div className='row'>
                 {this.state.articles.length === 0 && !this.state.loading ? (
