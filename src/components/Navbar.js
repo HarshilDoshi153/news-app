@@ -31,21 +31,21 @@ export default class Navbar extends Component {
                                     <a className="nav-link active text-light" aria-current="page" href="/newsapp" to="/newsapp">Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link text-light" href="/newsapp/about" to="/newsapp/about">About</a>
+                                    <a className="nav-link text-light" href="/about" to="/newsapp/about">About</a>
                                 </li>
                                 <li className="nav-item dropdown ">
                                     <a className="nav-link dropdown-toggle text-light" href="/newsapp" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Categories
                                     </a>
                                     <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="/newsapp/sports">Sports</a></li>
-                                        <li><a className="dropdown-item" href="/newsapp/business">Business</a></li>
+                                        <li><a className="dropdown-item" href="/sports">Sports</a></li>
+                                        <li><a className="dropdown-item" href="/business">Business</a></li>
                                         <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="/newsapp/entertainment">Entertainment</a></li>
-                                        <li><a className="dropdown-item" href="/newsapp" to="/newsapp">General</a></li>
-                                        <li><a className="dropdown-item" href="/newsapp/science">Science</a></li>
-                                        <li><a className="dropdown-item" href="/newsapp/technology">Technology</a></li>
-                                        <li><a className="dropdown-item" href="/newsapp/health">health</a></li>
+                                        <li><a className="dropdown-item" href="/entertainment">Entertainment</a></li>
+                                        <li><a className="dropdown-item" href="/" to="/newsapp">General</a></li>
+                                        <li><a className="dropdown-item" href="/science">Science</a></li>
+                                        <li><a className="dropdown-item" href="/technology">Technology</a></li>
+                                        <li><a className="dropdown-item" href="/health">health</a></li>
                                     </ul>
                                 </li>
                             </ul>
