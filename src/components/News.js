@@ -48,6 +48,7 @@ export default class News extends Component {
       console.log(url);
     } else {
       url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=e0214fe573a3442fa7939deb3efb09a7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      console.log(url)
     }
     
     let data = await fetch(url);
