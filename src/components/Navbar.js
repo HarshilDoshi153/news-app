@@ -42,7 +42,7 @@ export default class Navbar extends Component {
                                         <li><a className="dropdown-item" href="/business">Business</a></li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li><a className="dropdown-item" href="/entertainment">Entertainment</a></li>
-                                        <li><a className="dropdown-item" href="/" to="/">General</a></li>
+                                        <li><a className="dropdown-item" href="/news-app" to="/news-app">General</a></li>
                                         <li><a className="dropdown-item" href="/science">Science</a></li>
                                         <li><a className="dropdown-item" href="/technology">Technology</a></li>
                                         <li><a className="dropdown-item" href="/health">health</a></li>
