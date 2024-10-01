@@ -22,7 +22,7 @@ export default class App extends Component {
         <div>
           <Navbar onSearch={this.handleSearch} /> {/* Navbar component with links */}
           <Routes>
-            <Route path="/news-app/" element={<News pageSize={15} category="general" title="General" searchTerm={this.state.searchTerm} />} /> {/* Home page */}
+            <Route path="/" element={<News pageSize={15} category="general" title="General" searchTerm={this.state.searchTerm} />} /> {/* Home page */}
             <Route path="/sports" element={<News pageSize={15} category="sports" title="Sports" searchTerm={this.state.searchTerm} />} /> {/* sports news */}
             <Route path="/business" element={<News pageSize={15} category="business" title="Business" searchTerm={this.state.searchTerm} />} /> {/* business news */}
             <Route path="/entertainment" element={<News pageSize={15} category="entertainment" title="Entertainment" searchTerm={this.state.searchTerm} />} /> {/* entertainment news */}
