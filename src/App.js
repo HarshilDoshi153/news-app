@@ -9,7 +9,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       searchTerm: '', // State to hold the search term
-      //hello
+
+      //Hello world
     };
   }
 
